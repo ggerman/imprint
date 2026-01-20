@@ -37,9 +37,9 @@ module Imprint
     end
 
     def self.secure_compare(a, b)
-      return false unless a.bytesize == b.bytesize
+    return false unless a.bytesize == b.bytesize
 
-      ActiveSupport::SecurityUtils.secure_compare(a, b)
+    OpenSSL.fixed_length_secure_compare(a, b)
     end
   end
 end
