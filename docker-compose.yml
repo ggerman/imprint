@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  imprint:
+    build: .
+    container_name: ruby3_3
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      RUBY_BOX: 1
