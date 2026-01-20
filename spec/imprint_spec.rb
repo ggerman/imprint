@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe App do
+RSpec.describe Imprint do
   it "has a version number" do
-    expect(App::VERSION).not_to be nil
+    expect(Imprint::VERSION).not_to be nil
   end
 
-  it "does something useful" do
+  xit "does something useful" do
     expect(false).to eq(true)
   end
 end

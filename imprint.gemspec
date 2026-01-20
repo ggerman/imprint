@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/app/version"
+require_relative "lib/imprint/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "app"
-  spec.version = App::VERSION
+  spec.name = "imprint"
+  spec.version = Imprint::VERSION
   spec.authors = ["TODO: Write your name"]
   spec.email = ["TODO: Write your email address"]
 
