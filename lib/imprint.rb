@@ -8,7 +8,7 @@ module Imprint
     payload = {
       source: source,
       watermark: watermark,
-      exp: expires_in.from_now.to_i
+      exp: Time.now.to_i + expires_in.to_i
     }
 
     token = Signer.sign(payload, secret: secret_key)
