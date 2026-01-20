@@ -1,5 +1,4 @@
 require "imprint/version"
-require "imprint/engine"
 require "imprint/signer"
 
 module Imprint
