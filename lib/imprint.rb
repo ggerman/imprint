@@ -2,6 +2,8 @@
 
 require 'imprint/version'
 require 'imprint/signer'
+require 'imprint/renderer'
+require 'imprint/engine' if defined?(Rails)
 
 module Imprint
   def self.sign(source:, watermark:, expires_in:)
@@ -22,6 +24,16 @@ module Imprint
     return nil if payload['exp'].to_i < Time.now.to_i
 
     payload
+  end
+
+  def self.render_from_token(token)
+    payload = verify(token)
+    return nil unless payload
+
+    Renderer.render(
+      source: payload['source'],
+      watermark: payload['watermark']
+    )
   end
 
   def self.secret_key
