@@ -6,6 +6,12 @@ require 'imprint/renderer'
 require 'imprint/engine' if defined?(Rails)
 require 'imprint/railtie' if defined?(Rails)
 
+if defined?(Rails)
+  require 'imprint/rails'
+  require 'imprint/rails/helper'
+  require 'imprint/railtie'
+end
+
 module Imprint
   def self.sign(source:, watermark:, expires_in:)
     payload = {
@@ -38,11 +44,8 @@ module Imprint
   end
 
   def self.secret_key
-    # sin engine todavía; Rails solo si existe
-    if defined?(Rails)
-      Rails.application.secret_key_base
-    else
-      ENV['IMPRINT_SECRET'] || 'imprint-dev-secret'
+    ENV.fetch('IMPRINT_SECRET') do
+      raise 'IMPRINT_SECRET is not configured'
     end
   end
 end

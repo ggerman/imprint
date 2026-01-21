@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 require 'gd'
 require 'securerandom'
 require 'tmpdir'

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'imprint-image'
 require 'rails/railtie'
 
 module Imprint

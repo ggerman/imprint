@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-require "imprint"
+ENV["IMPRINT_SECRET"] ||= "test-secret"
+
+require "bundler/setup"
+require "imprint_image"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
