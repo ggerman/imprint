@@ -1,3 +1,5 @@
+📖 Read the full article on Rubystack News: **[Imprint: Signed, Expiring Image Rendering with Dynamic Watermarks in Ruby](https://rubystacknews.com/2026/01/21/imprint-signed-expiring-image-rendering-with-dynamic-watermarks-in-ruby/)**
+
 # Imprint Image
 
 **Signed, expiring image watermark rendering for Ruby**

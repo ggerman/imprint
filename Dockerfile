@@ -17,8 +17,16 @@ Libs: -L\${libdir} -lgd\n\
 Cflags: -I\${includedir}\n" \
 > /usr/lib/x86_64-linux-gnu/pkgconfig/gd.pc
 
+EXPOSE 3000
+
 ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
 RUN gem update --system 4.0.4
+
+COPY lib/imprint/version.rb ./lib/imprint/
+COPY imprint-image.gemspec ./
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle install
 
 WORKDIR /app
