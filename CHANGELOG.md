@@ -1,7 +1,9 @@
 ## Changelog.md
 
+## 0.1.1 - 2026-01-21
 
-## 0.1.1
-- Rails integration documentation
-- Optional Railtie for Rails environments
+- Optional Rails integration via Railtie
+- Rails view helper for rendering signed images
+- Documentation for Rails usage
+
 ## [0.1.0] - 2026-01-20
