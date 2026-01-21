@@ -4,10 +4,7 @@ require 'imprint/version'
 require 'imprint/signer'
 require 'imprint/renderer'
 require 'imprint/engine' if defined?(Rails)
-
-if defined?(Rails)
-  require 'imprint/railtie'
-end
+require 'imprint/railtie' if defined?(Rails)
 
 module Imprint
   def self.sign(source:, watermark:, expires_in:)

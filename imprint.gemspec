@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Signed, expiring image watermark rendering for Ruby"
   spec.description = <<~DESC
-  Imprint is a Ruby library for generating signed, time-limited image renders
-  with dynamic text watermarks. It allows you to securely distribute images
-  using expiring tokens, preventing unauthorized reuse or hotlinking.
+    Imprint is a Ruby library for generating signed, time-limited image renders
+    with dynamic text watermarks. It allows you to securely distribute images
+    using expiring tokens, preventing unauthorized reuse or hotlinking.
 
-  Imprint works as a pure Ruby library and can optionally integrate with Rails
-  via an isolated engine. Image rendering is powered by the GD graphics library.
-DESC
+    Imprint works as a pure Ruby library and can optionally integrate with Rails
+    via an isolated engine. Image rendering is powered by the GD graphics library.
+  DESC
   spec.homepage = "https://github.com/ggerman/imprint"
   spec.license = "MIT"
   spec.required_ruby_version = '>= 3.3.0'
