@@ -1,62 +1,158 @@
-# imprint
-Secure, signed image rendering for Rails
+# Imprint Image
+
+**Signed, expiring image watermark rendering for Ruby**
+
+`imprint-image` is a Ruby library for generating **signed, time-limited image renders** with **dynamic text watermarks**.
+It allows you to securely distribute images using **expiring tokens**, preventing unauthorized reuse, hotlinking, or permanent access.
+
+The library is **framework-agnostic** and works as pure Ruby, with **optional Rails integration**.
+
+Image rendering is powered by the **GD graphics library**.
+
+---
+
+## Features
+
+- 🔐 Signed tokens with expiration
+- 🖼 Dynamic text watermarks rendered on the fly
+- ⏱ Time-limited image access
+- 🚫 Prevents hotlinking and unauthorized reuse
+- 🧩 Pure Ruby core
+- 🚆 Optional Rails integration (no forced dependency)
+
+---
 
 ## Installation
 
-### System dependencies
+### RubyGems
 
 ```bash
-Ubuntu:
+gem install imprint-image
+```
+
+or in your `Gemfile`:
+
+```ruby
+gem 'imprint-image'
+```
+
+---
+
+## Requirements
+
+- Ruby ≥ 3.3
+- GD graphics library (`libgd`)
+- The `ruby-libgd` gem (installed automatically)
+
+On Debian / Ubuntu:
+
+```bash
 sudo apt install libgd-dev
 ```
 
-macOS:
-```bash
-brew install gd
-```
+---
 
-### Gemfile
-```bash
-gem 'imprint'
-```
+## Basic Usage (Pure Ruby)
 
-
-
-## Rails integration
-
-Imprint is framework-agnostic, but integrates cleanly with Rails.
-
-### Routes
-
-Define your own route:
-
-```ruby
-# config/routes.rb
-get '/imprint/:token', to: 'imprint#show'
-```
-### Controller
-
-```ruby
-class ImprintController < ApplicationController
-  def show
-    path = Imprint.render_from_token(params[:token])
-
-    return head :not_found unless path
-
-    send_file path, type: 'image/png', disposition: 'inline'
-  end
-end
-```
-
-### Usage
+### Generate a signed token
 
 ```ruby
 token = Imprint.sign(
   source: '/path/to/image.png',
   watermark: 'CONFIDENTIAL',
-  expires_in: 5.minutes
+  expires_in: 60
 )
 ```
-```html
+
+---
+
+### Render an image from a token
+
+```ruby
+output_path = Imprint.render_from_token(token)
+
+if output_path
+  puts "Rendered image at: #{output_path}"
+else
+  puts "Token expired or invalid"
+end
+```
+
+---
+
+## Rails Integration (Optional)
+
+Imprint does **not** force routes or controllers.
+
+### Example Route
+
+```ruby
+get '/imprint/:token', to: 'imprint#show'
+```
+
+---
+
+### Example Controller
+
+```ruby
+class ImprintController < ApplicationController
+  def show
+    path = Imprint.render_from_token(params[:token])
+    return head :not_found unless path
+    send_file path, type: 'image/png', disposition: 'inline'
+  end
+end
+```
+
+---
+
+### Example View
+
+```erb
 <img src="/imprint/<%= token.split('/').last %>" />
 ```
+
+---
+
+## Rails View Helper
+
+```erb
+<%= imprint_image_tag(token, class: "watermarked") %>
+```
+
+---
+
+## Security Model
+
+- Tokens are signed and tamper-proof
+- Tokens include an expiration timestamp
+- Expired tokens cannot be rendered
+
+---
+
+## Temporary Files
+
+Rendered images are written to `Dir.tmpdir`.
+You are responsible for cleaning them if needed.
+
+---
+
+## Development
+
+```bash
+bundle install
+bundle exec rake
+```
+
+---
+
+## License
+
+MIT License.
+
+---
+
+## Author
+
+Germán Giménez Silva  
+https://github.com/ggerman
