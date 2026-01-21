@@ -3,7 +3,7 @@
 require_relative "lib/imprint/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "imprint"
+  spec.name = "imprint-image"
   spec.version = Imprint::VERSION
   spec.authors = ["Giménez Silva Germán Alberto"]
   spec.email = ["ggerman@gmail.com"]
