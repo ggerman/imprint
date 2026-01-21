@@ -5,19 +5,26 @@ require_relative "lib/imprint/version"
 Gem::Specification.new do |spec|
   spec.name = "imprint"
   spec.version = Imprint::VERSION
-  spec.authors = ["TODO: Write your name"]
-  spec.email = ["TODO: Write your email address"]
+  spec.authors = ["Giménez Silva Germán Alberto"]
+  spec.email = ["ggerman@gmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Signed, expiring image watermark rendering for Ruby"
+  spec.description = <<~DESC
+  Imprint is a Ruby library for generating signed, time-limited image renders
+  with dynamic text watermarks. It allows you to securely distribute images
+  using expiring tokens, preventing unauthorized reuse or hotlinking.
+
+  Imprint works as a pure Ruby library and can optionally integrate with Rails
+  via an isolated engine. Image rendering is powered by the GD graphics library.
+DESC
+  spec.homepage = "https://github.com/ggerman/imprint"
   spec.license = "MIT"
   spec.required_ruby_version = '>= 3.3.0'
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/ggerman/imprint"
+  spec.metadata["changelog_uri"] = "https://github.com/ggerman/imprint/blob/main/CHANGELOG.md"
   spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
@@ -29,6 +36,7 @@ Gem::Specification.new do |spec|
         f.start_with?(*%w[bin/ Gemfile .gitignore .rspec spec/ .github/ .rubocop.yml])
     end
   end
+
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
