@@ -2,6 +2,13 @@
 
 # Imprint Image
 
+
+![](docs/images/main-jp.png)
+
+---
+
+![](docs/images/main.png)
+
 **Signed, expiring image watermark rendering for Ruby**
 
 `imprint-image` is a Ruby library for generating **signed, time-limited image renders** with **dynamic text watermarks**.
